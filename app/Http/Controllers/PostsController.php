@@ -51,6 +51,10 @@ class PostsController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $post->delete();
+
+        flash()->success('Deleted!', 'Go ahead and try again!');
+        
+        return redirect()->route('posts.index');
     }
 }

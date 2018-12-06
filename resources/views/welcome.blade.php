@@ -171,13 +171,21 @@
                                 </div>
                                 @auth
                                     @if(auth()->user()->id == $post->user_id)
-                                        <div class="float-right">
-                                            <span class="my-3">
-                                                <button class="btn btn-light">
-                                                    <i class="fa fa-trash text-danger"></i>
-                                                </button>
-                                            </span>
-                                        </div>
+                                                
+                                        
+                                                <form method="post" action="{{ route('posts.delete', $post) }}" onSubmit="return confirm('Are you sure?');" class="form form-group">
+                                                    {{ csrf_field() }}
+                                                    {{ method_field('DELETE') }}
+                                                    <div class="float-right">
+                                                        <span class="my-3">
+                                                            <button type="submit" class="btn btn-light">
+                                                                <i class="fa fa-trash text-danger"></i>
+                                                            </button>
+                                                        </span>
+                                                    </div>
+                                                </form>
+                                            
+                                        
                                     @endif 
                                 @endauth
                             </div>
