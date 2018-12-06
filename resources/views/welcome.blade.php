@@ -109,10 +109,14 @@
                 <div class="row">
                     <div class="col-12">
                         <h1>Send A Message To Santa</h1>
-                        
+
                     </div>
                 </div>
                 <hr>
+                <h3 class="text-center text-muted">Want to tell Santa what you want for Christmas this year? Go ahead!</h3>
+                @guest
+                    <h4 class="text-center text-muted mb-3"><a href="{{ route('register') }}" title="Register Now">Register</a> for more beneifts, such as deleting your messages.</h4>
+                @endguest
                 <div class="row mb-5 align-items-center">
                     <div class="col-md-6">
                         @if ($errors->any())
@@ -129,18 +133,21 @@
                             {{ csrf_field() }}
                             <div class="form-group">
                                 <label class="sr-only" for="name">Your Name</label>
-                                <input type="text" name="name" value="{{ old('name') }}" class="form-control" placeholder="Your name ...">
+                                <input type="text" name="name" value="{{ old('name') }}" class="form-control form-control-lg" placeholder="Your name ..." required="required">
+                                <small class="form-text text-muted">Your name is required.</small>
                             </div>
                             <div class="form-group">
                                 <label class="sr-only" for="email">Email address</label>
-                                <input type="email" name="email" value="{{ old('email') }}"  class="form-control" placeholder="Your email ...">
+                                <input type="email" name="email" value="{{ old('email') }}"  class="form-control form-control-lg" placeholder="Your email ..." required="required">
+                                <small class="form-text text-muted">Email is required, but we'll never share your email with anyone else.</small>
                             </div>
                             <div class="form-group">
                                 <label for="body" class="sr-only">Your Message</label>
-                                <textarea name="body" class="form-control" placeholder="Your message ...">{{ old('body') }}</textarea>
+                                <textarea name="body" class="form-control form-control-lg" placeholder="Your message ..." required>{{ old('body') }}</textarea>
+                                <small class="form-text text-muted">You, of course, need to say something.</small>
                             </div>
                             
-                            <button type="submit" class="btn btn-primary">Send To Santa</button>
+                            <button type="submit" class="btn btn-primary btn-lg">Send To Santa</button>
                         </form>
                     </div>
                     <div class="col-md-6 d-none d-md-table-cell text-center">
@@ -188,7 +195,9 @@
                 </div>
             </div>
         </div>
-
+        <div class="container text-center mt-5 p-3 mb-2 bg-success text-white font-weight-bold">
+            © {{ date('Y') }} <a class="text-white" href="https://jpdavy.com" target="_blank">JP Davy.</a> 
+        </div>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <div id="flash">
             @include('partials.flash')
