@@ -133,12 +133,12 @@
                             {{ csrf_field() }}
                             <div class="form-group">
                                 <label class="sr-only" for="name">Your Name</label>
-                                <input type="text" name="name" value="{{ old('name') }}" class="form-control form-control-lg" placeholder="Your name ..." required="required">
+                                <input type="text" name="name" value="{{ (old('name') ?? auth()->user()->name ?? '') }}" class="form-control form-control-lg" placeholder="Your name ..." required="required">
                                 <small class="form-text text-muted">Your name is required.</small>
                             </div>
                             <div class="form-group">
                                 <label class="sr-only" for="email">Email address</label>
-                                <input type="email" name="email" value="{{ old('email') }}"  class="form-control form-control-lg" placeholder="Your email ..." required="required">
+                                <input type="email" name="email" value="{{ (old('email') ?? auth()->user()->email ?? '') }}"  class="form-control form-control-lg" placeholder="Your email ..." required="required">
                                 <small class="form-text text-muted">Email is required, but we'll never share your email with anyone else.</small>
                             </div>
                             <div class="form-group">
