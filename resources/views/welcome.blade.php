@@ -180,11 +180,12 @@
                 @else
                     No messages to show.
                 @endif
-
-                {{ $posts->onEachSide(5)->links() }}
-                    
-                        
-                    
+                <hr class="mt-5">
+                <div class="row mb-5">
+                    <div class="col-12">
+                        {{ $posts->links() }}
+                    </div>
+                </div>
             </div>
         </div>
 
