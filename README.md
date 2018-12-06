@@ -17,8 +17,8 @@ The basic app is titled Send To Santa, allowing users to post a message to Santa
 
 ## Built With
 
-* [Laravel](https://laravel.com/) - The PHP framework used
-* [Bootstrap CSS](https://getbootstrap.com) - Used to generate RSS Feeds
+* [Laravel](https://laravel.com/)
+* [Bootstrap CSS](https://getbootstrap.com)
 
 ## Authors
 
