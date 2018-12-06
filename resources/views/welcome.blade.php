@@ -1,6 +1,8 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -147,30 +149,32 @@
                 </div>
                 
                 @if($posts->count() > 0)
-                    <div class="card-columns">
+                    <div class="row">
                     @foreach($posts as $post)
-                        <div class="card mb-3 p-2">
-                            
-                            <div class="card-body">
-                                <div class="mb-3 text-right text-muted small font-italic">{{ $post->created_at->diffForHumans() }}</div>
-                                <blockquote class="blockquote mb-0">
-                                    <p>{{ $post->body }}</p>
-                                    <footer class="blockquote-footer">{{ $post->name }} <cite title="Source Title">{{ $post->email }}</cite></footer>
-                                </blockquote>
+                        <div class="col-md-4">
+                            <div class="card mb-3 p-2">
                                 
+                                <div class="card-body">
+                                    <div class="mb-3 text-right text-muted small font-italic">{{ $post->created_at->diffForHumans() }}</div>
+                                    <blockquote class="blockquote mb-0">
+                                        <p>{{ $post->body }}</p>
+                                        <footer class="blockquote-footer">{{ $post->name }} <cite title="Source Title">{{ $post->email }}</cite></footer>
+                                    </blockquote>
+                                    
+                                </div>
+                                @auth
+                                    @if(auth()->user()->id == $post->user_id)
+                                        <div class="float-right">
+                                            <span class="my-3">
+                                                <button class="btn btn-light">
+                                                    <i class="fa fa-trash text-danger"></i>
+                                                </button>
+                                            </span>
+                                        </div>
+                                    @endif 
+                                @endauth
                             </div>
-                            @auth
-                                @if(auth()->user()->id == $post->user_id)
-                                    <div class="float-right">
-                                        <span class="my-3">
-                                            <button class="btn btn-light">
-                                                <i class="fa fa-trash text-danger"></i>
-                                            </button>
-                                        </span>
-                                    </div>
-                                @endif 
-                            @endauth
-                        </div>
+                        </div> 
                     @endforeach
                     </div>
                 @else
